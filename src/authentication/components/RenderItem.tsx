@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View, useWindowDimensions} from 'react-native';
+import { StyleSheet, Text, View, useWindowDimensions, Image } from 'react-native';
 import React from 'react';
 import Animated, {
   Extrapolation,
@@ -6,7 +6,7 @@ import Animated, {
   interpolate,
   useAnimatedStyle,
 } from 'react-native-reanimated';
-import {OnboardingData} from '../data/data';
+import { OnboardingData } from '../data/data';
 import LottieView from 'lottie-react-native';
 
 type Props = {
@@ -15,8 +15,8 @@ type Props = {
   item: OnboardingData;
 };
 
-const RenderItem = ({index, x, item}: Props) => {
-  const {width: SCREEN_WIDTH} = useWindowDimensions();
+const RenderItem = ({ index, x, item }: Props) => {
+  const { width: SCREEN_WIDTH } = useWindowDimensions();
 
   const lottieAnimationStyle = useAnimatedStyle(() => {
     const translateYAnimation = interpolate(
@@ -31,7 +31,7 @@ const RenderItem = ({index, x, item}: Props) => {
     );
 
     return {
-      transform: [{translateY: translateYAnimation}],
+      transform: [{ translateY: translateYAnimation }],
     };
   });
 
@@ -48,12 +48,12 @@ const RenderItem = ({index, x, item}: Props) => {
     );
 
     return {
-      transform: [{scale: scale}],
+      transform: [{ scale: scale }],
     };
   });
 
   return (
-    <View style={[styles.itemContainer, {width: SCREEN_WIDTH}]}>
+    <View style={[styles.itemContainer, { width: SCREEN_WIDTH }]}>
       <View style={styles.circleContainer}>
         <Animated.View
           style={[
@@ -68,17 +68,16 @@ const RenderItem = ({index, x, item}: Props) => {
         />
       </View>
       <Animated.View style={lottieAnimationStyle}>
-        <LottieView
+        <Image
           source={item.animation}
           style={{
             width: SCREEN_WIDTH * 0.9,
             height: SCREEN_WIDTH * 0.9,
+            resizeMode:'contain'
           }}
-          autoPlay
-          loop
         />
       </Animated.View>
-      <Text style={[styles.itemText, {color: item.textColor}]}>
+      <Text style={[styles.itemText, { color: item.textColor }]}>
         {item.text}
       </Text>
     </View>
@@ -96,7 +95,7 @@ const styles = StyleSheet.create({
   },
   itemText: {
     textAlign: 'center',
-    fontSize: 44,
+    fontSize: 35,
     fontWeight: 'bold',
     marginBottom: 10,
     marginHorizontal: 20,
