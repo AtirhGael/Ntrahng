@@ -7,6 +7,7 @@ import pin from './pin.png'
 import point from './point.png'
 import search from './search.png'
 import to from './to.png'
+import noResult from './no-result.png'
 
 
 export {
@@ -19,4 +20,5 @@ export {
     mapIcon,
     search,
     to,
+    noResult,
 }
