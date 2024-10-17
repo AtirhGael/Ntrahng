@@ -1,7 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
+import  LocationSlice  from '../sclice/UseLocationSclice'
+import  locationReducer  from '../sclice/locationSlice'
+import  driverReducer  from '../sclice/DriverSlice'
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    locationState:LocationSlice,
+    location: locationReducer,
+    driver: driverReducer,
+  },
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

@@ -1,11 +1,18 @@
 import { View, Text, FlatList, StyleSheet, Image, ActivityIndicator } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import RideCard from '../components/RideCard'
 import { Ride } from '../types/types';
 import { noResult } from '../assets/images';
 import GoogleTextInput from '../components/GoogleTextInput';
 import Map from '../components/Map';
+import * as Location from 'expo-location';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../redux/store/store';
+import { setDestinationLocation, setUserLocation } from '../redux/sclice/locationSlice';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../navigator/RootNavigator';
 
 const recentRides: Ride[] = [
   {
@@ -68,9 +75,52 @@ const recentRides: Ride[] = [
 ];
 
 export default function Home() {
+
+  const [hasPermision, sethasPermision] = useState(false)
+  const [initialLocation, setinitialLocation] = useState('')
+
+  const dispatch: AppDispatch = useDispatch()
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>()
+
+  useEffect(() => {
+    const requestLocation = async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+
+      if (status !== 'granted') {
+        sethasPermision(false)
+        return
+      }
+
+      let location = await Location.getCurrentPositionAsync()
+
+      const address = await Location.reverseGeocodeAsync({
+        latitude: location.coords.latitude!,
+        longitude: location.coords.longitude
+      })
+      setinitialLocation(address[0].city!)
+      
+
+      dispatch(setUserLocation({
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude,
+        address: `${address[0].name}, ${address[0].region}`,
+      }));
+    }
+    requestLocation()
+  }, [])
+
+  const handleDestinationPres =(location:{
+    latitude:number,
+    longitude:number,
+    address:string
+  }) =>{
+    dispatch(setDestinationLocation(location))
+    navigation.navigate('findRide')
+  }
   return (
     <SafeAreaView>
       <FlatList
+      keyboardShouldPersistTaps='always'
         showsVerticalScrollIndicator={false}
         data={recentRides}
         renderItem={({ item }) => <RideCard ride={item} />}
@@ -86,18 +136,18 @@ export default function Home() {
             <ActivityIndicator size="small" color="#000" />
           </View>
         )}
-        ListHeaderComponent={()=>(
-          <View style={{width:'95%',alignSelf:'center' }}>
-              <Text style={{fontSize:20}}>
-                Welcome User name👋
-              </Text>
-              <GoogleTextInput/>
+        ListHeaderComponent={() => (
+          <View style={{ width: '95%', alignSelf: 'center' }}>
+            <Text style={{ fontSize: 20 }}>
+              Welcome User name👋
+            </Text>
+            <GoogleTextInput handlePress={handleDestinationPres} initialLocation={initialLocation} textInputBackgroundColor='' />
 
-              <Text style={styles.currentLocation}>Your current location</Text>
-              <View style={{display:'flex',flexDirection:'row',height:300,backgroundColor:'transparent'}}>
-                <Map/>
-              </View>
-              <Text style={styles.currentLocation}>Recent Rides</Text>
+            <Text style={styles.currentLocation}>Your current location</Text>
+            <View style={{ display: 'flex', flexDirection: 'row', height: 300, backgroundColor: 'transparent' }}>
+              <Map />
+            </View>
+            <Text style={styles.currentLocation}>Recent Rides</Text>
           </View>
         )}
       />
@@ -113,15 +163,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   image: {
-    width: 160, // 40 * 4 for scaling
-    height: 160, // 40 * 4 for scaling
+    width: 160, 
+    height: 160, 
   },
   text: {
-    fontSize: 12, // Adjust as needed
+    fontSize: 12, 
   },
-  currentLocation:{
-    fontSize:18,
-    marginTop:5,
-    marginBottom:3
+  currentLocation: {
+    fontSize: 18,
+    marginTop: 5,
+    marginBottom: 3
   }
 })

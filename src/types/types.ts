@@ -1,26 +1,27 @@
-declare interface Driver {
-    id: number;
-    first_name: string;
-    last_name: string;
-    profile_image_url: string;
-    car_image_url: string;
-    car_seats: number;
-    rating: number;
-  }
-  declare interface MarkerData {
-    latitude: number;
-    longitude: number;
-    id: number;
-    title: string;
-    profile_image_url: string;
-    car_image_url: string;
-    car_seats: number;
-    rating: number;
-    first_name: string;
-    last_name: string;
-    time?: number;
-    price?: string;
-  }
+export interface Driver {
+  id: number;
+  first_name: string;
+  last_name: string;
+  profile_image_url: string;
+  car_image_url: string;
+  car_seats: number;
+  rating: number;
+}
+
+export interface MarkerData {
+  latitude: number;
+  longitude: number;
+  id: number;
+  title: string;
+  profile_image_url: string;
+  car_image_url: string;
+  car_seats: number;
+  rating: number;
+  first_name: string;
+  last_name: string;
+  time?: number;
+  price?: string;
+}
   declare interface MapProps {
     destinationLatitude?: number;
     destinationLongitude?: number;
@@ -65,3 +66,16 @@ declare interface Driver {
     }) => void;
   }
   
+  interface LocationAddress{
+    name:string;
+    region:string
+  }
+  export interface locationProps{
+    latitude:number;
+    longitude:number;
+    address:LocationAddress[];
+    destinationLatitude:number|null;
+    destinationLongitude:number|null
+  }
+
+ 

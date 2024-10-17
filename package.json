@@ -9,6 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@react-native-community/geolocation": "^3.4.0",
     "@react-native-vector-icons/feather": "^4.29.2-alpha.30",
     "@react-navigation/bottom-tabs": "^6.6.1",
     "@react-navigation/material-bottom-tabs": "^6.2.29",
@@ -17,11 +18,14 @@
     "@react-navigation/stack": "^6.4.1",
     "@reduxjs/toolkit": "^2.3.0",
     "expo": "~51.0.28",
+    "expo-location": "~17.0.1",
     "expo-status-bar": "~1.12.1",
     "lib-utils-ts": "^0.0.0-test",
     "lottie-react-native": "6.7.0",
     "react": "18.2.0",
     "react-native": "0.74.5",
+    "react-native-get-random-values": "^1.11.0",
+    "react-native-google-places-autocomplete": "^2.5.7",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "react-native-maps": "^1.18.2",
     "react-native-maps-directions": "^1.9.0",

@@ -5,6 +5,7 @@ import OnboardingScreen from '../authentication/Onbording';
 import Login from '../authentication/Login';
 import SignIn from '../authentication/SignUp';
 import { ButtomTabNavigation } from './ButtomTab';
+import FindRide from '../pages/drive/FindRide';
 
 
 
@@ -15,6 +16,7 @@ export type RootStackParamList = {
   Home: undefined;
   login: undefined;
   register: undefined;
+  findRide: undefined;
 }
 
 function RootNavigator() {
@@ -39,6 +41,7 @@ function RootNavigator() {
       <Stack.Screen name="login" component={Login} />
       <Stack.Screen name="register" component={SignIn} />
       <Stack.Screen name="Home" component={ButtomTabNavigation} />
+      <Stack.Screen name="findRide" component={FindRide} />
     </Stack.Navigator>
   );
 }
