@@ -66,16 +66,5 @@ export interface MarkerData {
     }) => void;
   }
   
-  interface LocationAddress{
-    name:string;
-    region:string
-  }
-  export interface locationProps{
-    latitude:number;
-    longitude:number;
-    address:LocationAddress[];
-    destinationLatitude:number|null;
-    destinationLongitude:number|null
-  }
 
  
