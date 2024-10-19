@@ -10,12 +10,13 @@ const GoogleTextInput = ({
     textInputBackgroundColor,
     handlePress,
 }:GoogleInputProps) => {
+
   return (
     <View >
       <GooglePlacesAutocomplete
       fetchDetails={true}
       query={{
-        key: 'AIzaSyCimQmlpDofy0SJ8G39L5AeNx5Z3KW8dWs',
+        key: process.env.EXPO_PUBLIC_LOCATIONS_API_KEY,
         language: 'en',
       }}
       placeholder='where do want to go'
