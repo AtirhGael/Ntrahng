@@ -13,7 +13,7 @@ export default function App() {
     "Jakarta-ExtraLight": require("./src/assets/fonts/PlusJakartaSans-ExtraLight.ttf"),
     "Jakarta-Light": require("./src/assets/fonts/PlusJakartaSans-Light.ttf"),
     "Jakarta-Medium": require("./src/assets/fonts/PlusJakartaSans-Medium.ttf"),
-    Jakarta: require("./src/assets/fonts/PlusJakartaSans-Regular.ttf"),
+    "Jakarta": require("./src/assets/fonts/PlusJakartaSans-Regular.ttf"),
     "Jakarta-SemiBold": require("./src/assets/fonts/PlusJakartaSans-SemiBold.ttf"),
   });
   return (

@@ -79,8 +79,6 @@ const styles = StyleSheet.create({
         position:'relative',
         marginBottom:5,
         marginTop:15,
-        // backgroundColor:'#FFF',
-        // elevation:1,
         width:'100%',
         alignSelf:'center'
     }
