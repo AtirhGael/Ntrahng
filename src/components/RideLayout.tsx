@@ -67,33 +67,33 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        backgroundColor: "#3b82f6", // Tailwind's 'bg-blue-500'
+        backgroundColor: "#3b82f6",
     },
     header: {
         position: "absolute",
-        top: 16, // approximately Tailwind's 'top-16'
+        top: 16,
         zIndex: 10,
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "flex-start",
-        paddingHorizontal: 20, // Tailwind's 'px-5'
+        paddingHorizontal: 20,
     },
     backButton: {
-        width: 40, // Tailwind's 'w-10'
-        height: 40, // Tailwind's 'h-10'
+        width: 40,
+        height: 40,
         backgroundColor: "white",
-        borderRadius: 9999, // makes the button circular
+        borderRadius: 9999,
         alignItems: "center",
         justifyContent: "center",
     },
     backIcon: {
-        width: 24, // Tailwind's 'w-6'
-        height: 24, // Tailwind's 'h-6'
+        width: 24,
+        height: 24,
     },
     title: {
-        fontSize: 20, // Tailwind's 'text-xl'
-        fontFamily: "JakartaSemiBold", // Tailwind's 'font-JakartaSemiBold'
-        marginLeft: 20, // Tailwind's 'ml-5'
+        fontSize: 20,
+        fontFamily: "JakartaSemiBold",
+        marginLeft: 20,
     },
     bottomSheetContent: {
         flex: 1,
