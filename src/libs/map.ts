@@ -100,14 +100,14 @@ export const calculateDriverTimes = async ({
         `https://maps.googleapis.com/maps/api/directions/json?origin=${marker.latitude},${marker.longitude}&destination=${userLatitude},${userLongitude}&key=${directionsAPI}`,
       );
       const dataToUser = await responseToUser.json();
-      const timeToUser = dataToUser.routes[0].legs[0].duration.value; // Time in seconds
+      const timeToUser = dataToUser.routes[0].legs[0].duration.value;
 
       const responseToDestination = await fetch(
         `https://maps.googleapis.com/maps/api/directions/json?origin=${userLatitude},${userLongitude}&destination=${destinationLatitude},${destinationLongitude}&key=${directionsAPI}`,
       );
       const dataToDestination = await responseToDestination.json();
       const timeToDestination =
-        dataToDestination.routes[0].legs[0].duration.value; // Time in seconds
+        dataToDestination.routes[0].legs[0].duration.value;
 
       const totalTime = (timeToUser + timeToDestination) / 60;
       const price = (totalTime * 0.5).toFixed(2);
