@@ -17,6 +17,7 @@ export type RootStackParamList = {
   login: undefined;
   register: undefined;
   findRide: undefined;
+  displayRide: undefined;
 }
 
 function RootNavigator() {
@@ -42,6 +43,7 @@ function RootNavigator() {
       <Stack.Screen name="register" component={SignIn} />
       <Stack.Screen name="Home" component={ButtomTabNavigation} />
       <Stack.Screen name="findRide" component={FindRide} />
+      <Stack.Screen name="displayRide" component={FindRide} />
     </Stack.Navigator>
   );
 }
