@@ -14,7 +14,7 @@ export const generateMarkersFromData = ({
 }): MarkerData[] => {
   return data.map((driver) => {
     const latOffset = (Math.random() - 0.5) * 0.01; 
-    const lngOffset = (Math.random() - 0.5) * 0.01; //about to cm bk heer
+    const lngOffset = (Math.random() - 0.5) * 0.01;
 
     return {
       latitude: userLatitude + latOffset,
